@@ -1,11 +1,12 @@
-import pytest
+import pytest # noqa: F401
 import os
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import fbeta_score, precision_score, recall_score
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import fbeta_score, precision_score, recall_score # noqa: F401
+from sklearn.ensemble import RandomForestClassifier # noqa: F401
 from ml.model import train_model, compute_model_metrics
+
 
 def test_data_split():
     """
@@ -20,9 +21,11 @@ def test_data_split():
     assert not train.empty, "Training dataset is empty."
     assert not test.empty, "Test dataset is empty."
 
+
 def test_compute_model_metrics():
     """
-    Assesses whether compute_model_metrics() correctly calculates precision, recall, and fbeta.
+    Assesses whether compute_model_metrics() correctly calculates 
+    precision, recall, and fbeta.
     """
     data = np.array([1, 0, 1, 0])
     preds = np.array([1, 1, 0, 0])
@@ -35,10 +38,12 @@ def test_compute_model_metrics():
 
 def test_model_predictions():
     """
-    Assesses whether train_model() produces an accurate model on simple test data.
+    Assesses whether train_model() produces an accurate model on 
+    simple test data.
     """
-    x = [[1], [2], [3], [4]]  
+    x = [[1], [2], [3], [4]]
     y = [1, 4, 9, 16]
     model = train_model(x, y)
     preds = model.predict(x)
     assert np.array_equal(preds, y), f"Predictions: {preds}. Expected: {y}."
+

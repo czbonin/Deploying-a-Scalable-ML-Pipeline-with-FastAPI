@@ -1,7 +1,4 @@
-import json
 import requests
-from fastapi import FastAPI
-import pandas as pd
 
 # TODO: send a GET using the URL http://127.0.0.1:8000
 r = requests.get("http://127.0.0.1:8000")

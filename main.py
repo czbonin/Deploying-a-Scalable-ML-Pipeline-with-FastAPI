@@ -24,7 +24,9 @@ class Data(BaseModel):
     capital_gain: int = Field(..., example=0, alias="capital-gain")
     capital_loss: int = Field(..., example=0, alias="capital-loss")
     hours_per_week: int = Field(..., example=40, alias="hours-per-week")
-    native_country: str = Field(..., example="United-States", alias="native-country")
+    native_country: str = Field(..., example="United-States", 
+                                     alias="native-country")
+
 
 path = os.path.join(os.getcwd(), 'model', 'encoder.pkl')
 encoder = load_model(path)
@@ -34,6 +36,7 @@ model = load_model(path)
 
 # TODO: create a RESTful API using FastAPI
 app = FastAPI()
+
 
 # TODO: create a GET on the root giving a welcome message
 @app.get("/")
@@ -47,9 +50,12 @@ async def get_root():
 async def post_inference(data: Data):
     # DO NOT MODIFY: turn the Pydantic model into a dict.
     data_dict = data.dict()
-    # DO NOT MODIFY: clean up the dict to turn it into a Pandas DataFrame.
-    # The data has names with hyphens and Python does not allow those as variable names.
-    # Here it uses the functionality of FastAPI/Pydantic/etc to deal with this.
+    # DO NOT MODIFY: clean up the dict to turn it into a 
+    # Pandas DataFrame.
+    # The data has names with hyphens and 
+    # Python does not allow those as variable names.
+    # Here it uses the functionality of 
+    # FastAPI/Pydantic/etc to deal with this.
     data = {k.replace("_", "-"): [v] for k, v in data_dict.items()}
     data = pd.DataFrame.from_dict(data)
 
