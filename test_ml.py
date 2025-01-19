@@ -3,8 +3,8 @@ import os
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import fbeta_score, precision_score, \
-recall_score  # noqa: F401
+from sklearn.metrics import (fbeta_score, precision_score,
+                             recall_score)  # noqa: F401
 from sklearn.ensemble import RandomForestClassifier  # noqa: F401
 from ml.model import train_model, compute_model_metrics
 
