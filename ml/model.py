@@ -26,7 +26,7 @@ def train_model(X_train, y_train):
 
 def compute_model_metrics(y, preds):
     """
-    Validates the trained machine learning model using 
+    Validates the trained machine learning model using
     precision, recall, and F1.
 
     Inputs
@@ -86,30 +86,30 @@ def load_model(path):
 
 
 def performance_on_categorical_slice(
-    data, column_name, slice_value, categorical_features, 
+    data, column_name, slice_value, categorical_features,
     label, encoder, lb, model
 ):
-    """ Computes the model metrics on a slice of the data 
+    """ Computes the model metrics on a slice of the data
     specified by a column name and
 
-    Processes the data using one hot encoding for the categorical features 
-    and a label binarizer for the labels. This can be used in either 
+    Processes the data using one hot encoding for the categorical features
+    and a label binarizer for the labels. This can be used in either
     training or inference/validation.
 
     Inputs
     ------
     data : pd.DataFrame
-        Dataframe containing the features and label. Columns in 
+        Dataframe containing the features and label. Columns in
         `categorical_features`
     column_name : str
         Column containing the sliced feature.
     slice_value : str, int, float
         Value of the slice feature.
     categorical_features: list
-        List containing the names of the categorical features 
+        List containing the names of the categorical features
         (default=[])
     label : str
-        Name of the label column in `X`. If None, then 
+        Name of the label column in `X`. If None, then
         an empty array will be returned
         for y (default=None)
     encoder : sklearn.preprocessing._encoders.OneHotEncoder
@@ -128,10 +128,9 @@ def performance_on_categorical_slice(
     """
     slice = data[data[column_name] == slice_value]
     X_slice, y_slice, _, _ = process_data(
-        slice, categorical_features, label, training=False, 
+        slice, categorical_features, label, training=False,
         encoder=encoder, lb=lb
     )
     preds = inference(model, X_slice)
     precision, recall, fbeta = compute_model_metrics(y_slice, preds)
     return precision, recall, fbeta
-

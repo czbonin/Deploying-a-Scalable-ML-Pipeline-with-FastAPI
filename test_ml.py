@@ -1,10 +1,11 @@
-import pytest # noqa: F401
+import pytest  # noqa: F401
 import os
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import fbeta_score, precision_score, recall_score # noqa: F401
-from sklearn.ensemble import RandomForestClassifier # noqa: F401
+from sklearn.metrics import fbeta_score, precision_score, \
+recall_score  # noqa: F401
+from sklearn.ensemble import RandomForestClassifier  # noqa: F401
 from ml.model import train_model, compute_model_metrics
 
 
@@ -24,7 +25,7 @@ def test_data_split():
 
 def test_compute_model_metrics():
     """
-    Assesses whether compute_model_metrics() correctly calculates 
+    Assesses whether compute_model_metrics() correctly calculates
     precision, recall, and fbeta.
     """
     data = np.array([1, 0, 1, 0])
@@ -38,7 +39,7 @@ def test_compute_model_metrics():
 
 def test_model_predictions():
     """
-    Assesses whether train_model() produces an accurate model on 
+    Assesses whether train_model() produces an accurate model on
     simple test data.
     """
     x = [[1], [2], [3], [4]]
@@ -46,4 +47,3 @@ def test_model_predictions():
     model = train_model(x, y)
     preds = model.predict(x)
     assert np.array_equal(preds, y), f"Predictions: {preds}. Expected: {y}."
-
