@@ -12,7 +12,6 @@ print(f"GET status code: {r.status_code}")
 print(f"GET response: {r.json()}")
 
 
-
 data = {
     "age": 37,
     "workclass": "Private",
